@@ -5,7 +5,6 @@
 #include "OLED_Fonts.h"
 #include "typedef.h"
 
-
 #define OLED_SCL(x) GPIO_Write(GPIO_P1, GPIO_Pin_0, x)
 #define OLED_SDA(x) GPIO_Write(GPIO_P1, GPIO_Pin_1, x)
 #define OLED_RES(x) GPIO_Write(GPIO_P1, GPIO_Pin_2, x)
@@ -15,10 +14,10 @@ GPIO_Type oled;
 /*引脚初始化*/
 void OLED_SPI_Init(void)
 {
-    oled.Mode=GPIO_OUT_PP;
-    oled.Pin=GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4;
+    oled.Mode = GPIO_OUT_PP;
+    oled.Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_4;
 
-    GPIO_Init(GPIO_P1,&oled);
+    GPIO_Init(GPIO_P1, &oled);
 
     OLED_SCL(0);
     OLED_SDA(1);
@@ -247,6 +246,7 @@ void OLED_ShowBinNum(u8 Line, u8 Column, u32 Number, u8 Length)
  */
 void OLED_Init(void)
 {
+    OLED_Clear(); // OLED清屏
 
     OLED_SPI_Init(); // 端口初始化
 
