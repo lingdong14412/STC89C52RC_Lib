@@ -5,6 +5,7 @@
 #include "OLED_Fonts.h"
 #include "typedef.h"
 
+
 #define OLED_SCL(x) GPIO_Write(GPIO_P1, GPIO_Pin_0, x)
 #define OLED_SDA(x) GPIO_Write(GPIO_P1, GPIO_Pin_1, x)
 #define OLED_RES(x) GPIO_Write(GPIO_P1, GPIO_Pin_2, x)
@@ -16,11 +17,9 @@ void OLED_SPI_Init(void)
 {
     oled.Mode=GPIO_OUT_PP;
     oled.Pin=GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4;
-    // 直接配置P1.0-P1.4为推挽输出
-    // P1M0 |= 0x1F; // P1.0-P1.4 推挽
-    // P1M1 &= ~0x1F;
+
     GPIO_Init(GPIO_P1,&oled);
-    // GPIO_MODE_OUT_PP(GPIO_P1,GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4);
+
     OLED_SCL(0);
     OLED_SDA(1);
     OLED_RES(1);

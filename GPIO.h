@@ -361,5 +361,6 @@ u8 GPIO_Init(u8 GPIO, GPIO_Type *GPIOx);
 u8 GPIO_Pin_Set(u8 Port, u8 Pin);
 u8 GPIO_Pin_Reset(u8 Port, u8 Pin);
 u8 GPIO_Write(u8 Port, u8 Pin, u8 Level);
+u8 GPIO_Read(u8 Port, u8 Pin);
 
 #endif

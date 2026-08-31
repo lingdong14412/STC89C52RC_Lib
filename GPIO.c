@@ -68,7 +68,7 @@ u8 GPIO_Init(u8 GPIO, GPIO_Type *GPIOx)
         else if (GPIOx->Mode == GPIO_OUT_PP)
             // P3M1 &= ~GPIOx->Pin, P3M0 |= GPIOx->Pin;
             P3_MODE_OUT_PP(GPIOx->Pin);
-        break;  
+        break;
 
     case GPIO_P4:
         if (GPIOx->Mode == GPIO_PullUp)
@@ -97,28 +97,30 @@ u8 GPIO_Init(u8 GPIO, GPIO_Type *GPIOx)
  */
 u8 GPIO_Pin_Set(u8 Port, u8 Pin)
 {
-    if (Port > 4) return FAIL;
-    if (Pin == 0) return FAIL;
-    
+    if (Port > 4)
+        return FAIL;
+    if (Pin == 0)
+        return FAIL;
+
     switch (Port)
     {
-        case 0:
-            P0 |= Pin;
-            break;
-        case 1:
-            P1 |= Pin;
-            break;
-        case 2:
-            P2 |= Pin;
-            break;
-        case 3:
-            P3 |= Pin;
-            break;
-        case 4:
-            P4 |= Pin;
-            break;
-        default:
-            return FAIL;
+    case 0:
+        P0 |= Pin;
+        break;
+    case 1:
+        P1 |= Pin;
+        break;
+    case 2:
+        P2 |= Pin;
+        break;
+    case 3:
+        P3 |= Pin;
+        break;
+    case 4:
+        P4 |= Pin;
+        break;
+    default:
+        return FAIL;
     }
     return SUCCESS;
 }
@@ -131,35 +133,38 @@ u8 GPIO_Pin_Set(u8 Port, u8 Pin)
  */
 u8 GPIO_Pin_Reset(u8 Port, u8 Pin)
 {
-    if (Port > 4) return FAIL;
-    if (Pin == 0) return FAIL;
-    
+    if (Port > 4)
+        return FAIL;
+    if (Pin == 0)
+        return FAIL;
+
     switch (Port)
     {
-        case 0:
-            P0 &= ~Pin;
-            break;
-        case 1:
-            P1 &= ~Pin;
-            break;
-        case 2:
-            P2 &= ~Pin;
-            break;
-        case 3:
-            P3 &= ~Pin;
-            break;
-        case 4:
-            P4 &= ~Pin;
-            break;
-        default:
-            return FAIL;
+    case 0:
+        P0 &= ~Pin;
+        break;
+    case 1:
+        P1 &= ~Pin;
+        break;
+    case 2:
+        P2 &= ~Pin;
+        break;
+    case 3:
+        P3 &= ~Pin;
+        break;
+    case 4:
+        P4 &= ~Pin;
+        break;
+    default:
+        return FAIL;
     }
     return SUCCESS;
 }
 
 u8 GPIO_Write(u8 Port, u8 Pin, u8 Level)
 {
-    if(Port>4)return FAIL;
+    if (Port > 4)
+        return FAIL;
     if (Level == HIGH)
     {
         GPIO_Pin_Set(Port, Pin);
@@ -169,4 +174,35 @@ u8 GPIO_Write(u8 Port, u8 Pin, u8 Level)
         GPIO_Pin_Reset(Port, Pin);
     }
     return FAIL;
+}
+
+u8 GPIO_Read(u8 Port, u8 Pin)
+{
+    u8 gpio_level;
+    switch (Port)
+    {
+    case GPIO_P0:
+        gpio_level = P0;
+        break;
+    case GPIO_P1:
+        gpio_level = P1;
+        break;
+    case GPIO_P2:
+        gpio_level = P2;
+        break;
+    case GPIO_P3:
+        gpio_level = P3;
+        break;
+    case GPIO_P4:
+        gpio_level = P4;
+        break;
+    default:
+        return FAIL;
+    }
+    if(gpio_level & Pin){
+        return HIGH;
+    }
+    else{
+        return LOW;
+    }
 }

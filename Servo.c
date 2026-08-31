@@ -1,5 +1,6 @@
 #include "Servo.h"
 #include "GPIO.h"
+
 void Servo_Init(Servo *S)
 {
     switch (S->Port)
@@ -31,8 +32,8 @@ u16 SetDuty(u16 angle)
 
 void ServoWrite(Servo *S, u16 angle)
 {
-    GPIO_Write(S->Port,S->Pin,HIGH);
+    GPIO_Pin_Set(S->Port,S->Pin);
     delayx10us(SetDuty(angle));
-    GPIO_Write(S->Port,S->Pin,LOW);
+    GPIO_Pin_Reset(S->Port,S->Pin);
     delayx10us(2000 - SetDuty(angle));
 }
