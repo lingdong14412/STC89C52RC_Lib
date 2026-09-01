@@ -11,7 +11,8 @@ void delayx10us(u16 us)
             ;
     }
 #elif FOSC == 12000000L
-    while (us--) //@12.000MHz
+    u16 dus = 4 * us;
+    while (dus--) //@12.000MHz
     {
         unsigned char data i;
         _nop_();
@@ -19,15 +20,7 @@ void delayx10us(u16 us)
         while (--i)
             ;
     }
-#elif FOSC == 24000000L
-    while (us--) //@24.000MHz
-    {
-        unsigned char data i;
-        _nop_();
-        i = 7;
-        while (--i)
-            ;
-    }
+
 #endif
 }
 
@@ -48,7 +41,8 @@ void delay(u16 ms)
         } while (--i);
     }
 #elif FOSC == 12000000L
-    while (ms--) //@12.000MHz
+    u16 dms = 4 * ms;
+    while (dms--) //@12.000MHz
     {
         unsigned char data i, j;
         i = 2;
@@ -59,17 +53,6 @@ void delay(u16 ms)
                 ;
         } while (--i);
     }
-#elif FOSC == 24000000L
-    while (ms--) //@24.000MHz
-    {
-        unsigned char data i, j;
-        i = 4;
-        j = 225;
-        do
-        {
-            while (--j)
-                ;
-        } while (--i);
-    }
+
 #endif
 }
