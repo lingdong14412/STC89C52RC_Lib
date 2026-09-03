@@ -9,30 +9,30 @@
 #### 端口宏：GPIP_P0 ~ GPIO_P4
 #### 引脚宏：GPIO_Pin_0 ~ GPIO_Pin_7
 #### 端口配置宏：
-        P0_MODE_IO_PU(GPIO_Px,GPIO_Pin_x)  配置P0的【一个】引脚为上拉模式
-        P0_MODE_IN_HIZ(GPIO_Px,GPIO_Pin_x) 配置P0的【一个】引脚为高阻模式
-        P0_MODE_OUT_PP(GPIO_Px,GPIO_Pin_x) 配置P0的【一个】引脚为推挽模式
-        P0_MODE_OUT_OD(GPIO_Px,GPIO_Pin_x) 配置P0的【一个】引脚为开漏模式
+        P0_MODE_IO_PU(GPIO_Pin_x)  配置P0的【一个】引脚为上拉模式
+        P0_MODE_IN_HIZ(GPIO_Pin_x) 配置P0的【一个】引脚为高阻模式
+        P0_MODE_OUT_PP(GPIO_Pin_x) 配置P0的【一个】引脚为推挽模式
+        P0_MODE_OUT_OD(GPIO_Pin_x) 配置P0的【一个】引脚为开漏模式
 
-        P1_MODE_IO_PU(GPIO_Px,GPIO_Pin_x)  配置P1的【一个】引脚为上拉模式
-        P1_MODE_IN_HIZ(GPIO_Px,GPIO_Pin_x) 配置P1的【一个】引脚为高阻模式
-        P1_MODE_OUT_PP(GPIO_Px,GPIO_Pin_x) 配置P1的【一个】引脚为推挽模式
-        P1_MODE_OUT_OD(GPIO_Px,GPIO_Pin_x) 配置P1的【一个】引脚为开漏模式
+        P1_MODE_IO_PU(GPIO_Pin_x)  配置P1的【一个】引脚为上拉模式
+        P1_MODE_IN_HIZ(GPIO_Pin_x) 配置P1的【一个】引脚为高阻模式
+        P1_MODE_OUT_PP(GPIO_Pin_x) 配置P1的【一个】引脚为推挽模式
+        P1_MODE_OUT_OD(GPIO_Pin_x) 配置P1的【一个】引脚为开漏模式
 
-        P2_MODE_IO_PU(GPIO_Px,GPIO_Pin_x)  配置P2的【一个】引脚为上拉模式
-        P2_MODE_IN_HIZ(GPIO_Px,GPIO_Pin_x) 配置P2的【一个】引脚为高阻模式
-        P2_MODE_OUT_PP(GPIO_Px,GPIO_Pin_x) 配置P2的【一个】引脚为推挽模式
-        P2_MODE_OUT_OD(GPIO_Px,GPIO_Pin_x) 配置P2的【一个】引脚为开漏模式
+        P2_MODE_IO_PU(GPIO_Pin_x)  配置P2的【一个】引脚为上拉模式
+        P2_MODE_IN_HIZ(GPIO_Pin_x) 配置P2的【一个】引脚为高阻模式
+        P2_MODE_OUT_PP(GPIO_Pin_x) 配置P2的【一个】引脚为推挽模式
+        P2_MODE_OUT_OD(GPIO_Pin_x) 配置P2的【一个】引脚为开漏模式
 
-        P3_MODE_IO_PU(GPIO_Px,GPIO_Pin_x)  配置P3的【一个】引脚为上拉模式
-        P3_MODE_IN_HIZ(GPIO_Px,GPIO_Pin_x) 配置P3的【一个】引脚为高阻模式
-        P3_MODE_OUT_PP(GPIO_Px,GPIO_Pin_x) 配置P3的【一个】引脚为推挽模式
-        P3_MODE_OUT_OD(GPIO_Px,GPIO_Pin_x) 配置P3的【一个】引脚为开漏模式
+        P3_MODE_IO_PU(GPIO_Pin_x)  配置P3的【一个】引脚为上拉模式
+        P3_MODE_IN_HIZ(GPIO_Pin_x) 配置P3的【一个】引脚为高阻模式
+        P3_MODE_OUT_PP(GPIO_Pin_x) 配置P3的【一个】引脚为推挽模式
+        P3_MODE_OUT_OD(GPIO_Pin_x) 配置P3的【一个】引脚为开漏模式
 
-        P4_MODE_IO_PU(GPIO_Px,GPIO_Pin_x)  配置P4的【一个】引脚为上拉模式
-        P4_MODE_IN_HIZ(GPIO_Px,GPIO_Pin_x) 配置P4的【一个】引脚为高阻模式
-        P4_MODE_OUT_PP(GPIO_Px,GPIO_Pin_x) 配置P4的【一个】引脚为推挽模式
-        P4_MODE_OUT_OD(GPIO_Px,GPIO_Pin_x) 配置P4的【一个】引脚为开漏模式
+        P4_MODE_IO_PU(GPIO_Pin_x)  配置P4的【一个】引脚为上拉模式
+        P4_MODE_IN_HIZ(GPIO_Pin_x) 配置P4的【一个】引脚为高阻模式
+        P4_MODE_OUT_PP(GPIO_Pin_x) 配置P4的【一个】引脚为推挽模式
+        P4_MODE_OUT_OD(GPIO_Pin_x) 配置P4的【一个】引脚为开漏模式
 
         GPIO_MODE_IO_PU(GPIO_Px,GPIO_Pin_x) 配置【多个】引脚为上拉模式(使用或运算)
         GPIO_MODE_IN_HIZ(GPIO_Px,GPIO_Pin_x) 配置【多个】引脚为高阻模式(使用或运算)

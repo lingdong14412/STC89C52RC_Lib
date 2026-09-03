@@ -4,9 +4,9 @@
 
 #include "typedef.h"
 #include <stdio.h>
+#define BUFSIZE 20
 
-
-extern u8 rxBuffer[20];
+extern u8 rxBuffer[BUFSIZE];
 extern u8 rxIndex;
 extern u8 cmdReady;
 void UART_Init();
