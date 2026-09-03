@@ -2,7 +2,6 @@
 #define __OLED_H
 
 #include "typedef.h"
-
 void OLED_Init(void);
 void OLED_Clear(void);
 void OLED_ShowChar(u8 Line, u8 Column, char Char);

@@ -1,6 +1,7 @@
 #include "GPIO.h"
 
-u8 GPIO_Init(u8 GPIO, GPIO_Type *GPIOx)
+
+u8 GPIO_Init(u8 GPIO, GPIO_t *GPIOx)
 {
     if (GPIO > GPIO_P4)
         return FAIL;

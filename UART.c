@@ -1,7 +1,7 @@
 #include "UART.h"
-#include "GPIO.h"
 #include "config.h"
 #include "typedef.h"
+#include "register.h"
 #include <stdio.h>
 
 u8 BaudRate = 9600;

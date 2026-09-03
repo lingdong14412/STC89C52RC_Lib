@@ -1,16 +1,17 @@
-
+#include "register.h"
 #include "Delay.h"
 #include "GPIO.h"
-#include "INTRINS.H"
+#include "intrins.h"
 #include "OLED_Fonts.h"
 #include "typedef.h"
+#include "OLED.h"
 
 #define OLED_SCL(x) GPIO_Write(GPIO_P1, GPIO_Pin_0, x)
 #define OLED_SDA(x) GPIO_Write(GPIO_P1, GPIO_Pin_1, x)
 #define OLED_RES(x) GPIO_Write(GPIO_P1, GPIO_Pin_2, x)
 #define OLED_DC(x) GPIO_Write(GPIO_P1, GPIO_Pin_3, x)
 #define OLED_CS(x) GPIO_Write(GPIO_P1, GPIO_Pin_4, x)
-GPIO_Type oled;
+GPIO_t oled;
 /*引脚初始化*/
 void OLED_SPI_Init(void)
 {
@@ -34,7 +35,6 @@ void OLED_SPI_Init(void)
 void OLED_SPI_SendByte(u8 Byte)
 {
     u8 i;
-
     for (i = 0; i < 8; i++)
     {
         OLED_SDA(!!(Byte & (0x80 >> i)));
@@ -246,8 +246,7 @@ void OLED_ShowBinNum(u8 Line, u8 Column, u32 Number, u8 Length)
  */
 void OLED_Init(void)
 {
-    OLED_Clear(); // OLED清屏
-
+    OLED_Clear();    // OLED清屏
     OLED_SPI_Init(); // 端口初始化
 
     OLED_WriteCommand(0xAE); // 关闭显示
@@ -283,10 +282,10 @@ void OLED_Init(void)
 
     OLED_WriteCommand(0xA6); // 设置正常/倒转显示
 
+    OLED_WriteCommand(0xAF); // 开启显示
+
     OLED_WriteCommand(0x8D); // 设置充电泵
     OLED_WriteCommand(0x14);
-
-    OLED_WriteCommand(0xAF); // 开启显示
 
     OLED_Clear(); // OLED清屏
 }
