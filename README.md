@@ -5,7 +5,7 @@
 ### typedef.h   类型声明
 ### config.h    用于选择晶振频率，以便匹配不同的外设函数
 ## 外设文件：
-### GPIO.h  (借鉴STC8G_H系列库函数及Arduino框架函数风格)
+### gpio.h  (借鉴STC8G_H系列库函数及Arduino框架函数风格)
 #### 端口宏：GPIP_P0 ~ GPIO_P4
 #### 引脚宏：GPIO_Pin_0 ~ GPIO_Pin_7
 #### 端口配置宏：
@@ -39,12 +39,12 @@
         GPIO_MODE_OUT_PP(GPIO_Px,GPIO_Pin_x) 配置【多个】引脚为推挽模式(使用或运算)
         GPIO_MODE_OUT_OD(GPIO_Px,GPIO_Pin_x) 配置【多个】引脚为开漏模式(使用或运算)
     
-#### 结构体：struct GPIO_t
+#### 结构体：struct gpio_t
 #### 成员：
-        Port  设置端口
+        Mode  设置端口模式
         Pin   设置引脚
 #### 函数：
-        u8 gpio_init(u8 Port,GPIO_t *gpio)
+        u8 gpio_init(u8 GPIO_Px,gpio_t *GPIO_Structure)
             返回值：成功SUCCESS
                     失败FAIL
 
@@ -69,7 +69,7 @@
                     LOW低电平
 
 
-### OLED.h  (SPI协议七针屏幕)(此为移植江科大STM32的OLED函数)
+### oled.h  (SPI协议七针屏幕)(此为移植江科大STM32的OLED函数)
 #### 管脚：
     时钟P10
     数据P11
@@ -110,7 +110,7 @@
         返回值：无
 
 
-### UART.h
+### uart.h
 #### 宏：
     BUFSIZE  设置接收数据缓冲区大小
 #### 变量：
@@ -132,7 +132,7 @@
     (接收到的数据末尾是没有\r\n的，要手动加上)
 ##### 另：已重定向printf()，可直接用printf发送字符串数据
 
-### Delay.h
+### delay.h
 #### 函数:
     void delay(u16 ms)
         延时指定毫秒数
