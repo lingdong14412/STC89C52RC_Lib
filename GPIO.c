@@ -1,4 +1,4 @@
-#include "GPIO.h"
+#include "gpio.h"
 
 
 u8 gpio_init(u8 GPIO_Px, gpio_t *GPIOx)

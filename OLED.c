@@ -1,10 +1,10 @@
 #include "register.h"
-#include "Delay.h"
-#include "GPIO.h"
+#include "delay.h"
+#include "gpio.h"
 #include "intrins.h"
-#include "OLED_Fonts.h"
+#include "oled_fonts.h"
 #include "typedef.h"
-#include "OLED.h"
+#include "oled.h"
 
 #define OLED_SCL(x) gpio_write(GPIO_P1, GPIO_Pin_0, x)
 #define OLED_SDA(x) gpio_write(GPIO_P1, GPIO_Pin_1, x)
