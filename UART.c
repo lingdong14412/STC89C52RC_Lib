@@ -9,7 +9,7 @@ u8 BaudRate = 9600;
 u8 rxBuffer[20];
 u8 rxIndex = 0;
 u8 cmdReady = 0;
-void Uart1_Isr(void) interrupt 4
+void uart_isr(void) interrupt 4
 {
     u8 ch;
     if (RI)
@@ -33,7 +33,7 @@ void Uart1_Isr(void) interrupt 4
     }
 }
 
-void UART_Init()
+void uart_init()
 {
     SCON = 0x50;  // 8位数据,可变波特率
     TMOD &= 0x0F; // 清零定时器1模式位
@@ -83,7 +83,7 @@ void UART_Init()
     ES = 1;  // 使能串口中断
     EA = 1;  // 开启总中断
 }
-void UART_SendByte(u8 dat)
+void uart_sendbyte(u8 dat)
 {
     SBUF = dat;
     while (!TI)
@@ -91,16 +91,16 @@ void UART_SendByte(u8 dat)
     TI = 0;
 }
 
-void UART_SendString(char *str)
+void uart_sendstring(char *str)
 {
     while (*str != '\0')
     {
-        UART_SendByte(*str++);
+        uart_sendbyte(*str++);
     }
 }
 
 char putchar(char c)
 {
-    UART_SendByte((u8)c);
+    uart_sendbyte((u8)c);
     return c;
 }

@@ -44,26 +44,26 @@
         Port  设置端口
         Pin   设置引脚
 #### 函数：
-        u8 GPIO_Init(u8 Port,GPIO_t *gpio)
+        u8 gpio_init(u8 Port,GPIO_t *gpio)
             返回值：成功SUCCESS
                     失败FAIL
 
-        u8 GPIO_Pin_Set(u8 Port,u8 Pin)      
-            把引脚设置为高电平
+        u8 gpio_set(u8 Port,u8 Pin)      
+            把引脚设置为高电平(可使用或运算)
             返回值：成功SUCCESS
                     失败FAIL
 
-        u8 GPIO_Pin_Reset(u8 Port,u8 Pin)    
-            把引脚设置为低电平
+        u8 gpio_reset(u8 Port,u8 Pin)    
+            把引脚设置为低电平(可使用或运算)
             返回值：成功SUCCESS
                     失败FAIL
 
-        u8 GPIO_Write(u8 Port,u8 Pin,u8 Level)   
+        u8 gpio_write(u8 Port,u8 Pin,u8 Level)   
             设置引脚电平状态(HIGH/LOW)
             返回值：成功SUCCESS
                     失败FAIL
 
-        u8 GPIO_Read(u8 Port,u8 Pin)    
+        u8 gpio_read(u8 Port,u8 Pin)    
             读取引脚电平状态
             返回值：HIGH高电平
                     LOW低电平
@@ -77,35 +77,35 @@
     数据/命令选择P13
     片选P14（可在OLED.c头顶的宏函数修改）
 #### 函数：
-    void OLED_Init()
+    void oled_init()
         初始化
         返回值：无
 
-    void OLED_Clear()
+    void oled_clear()
         清屏
         返回值：无
 
-    void OLED_ShowChar(u8 Line,u8 Column,char Char)
+    void oled_showchar(u8 Line,u8 Column,char Char)
         显示一个字符
         返回值：无
 
-    void OLED_ShowString(u8 Line,u8 Column,char*String)
+    void oled_showstring(u8 Line,u8 Column,char*String)
         显示一个字符串
         返回值：无
 
-    void OLED_ShowNum(u8 Line,u8 Column,u32 Number,u8 Length)
+    void oled_show_num(u8 Line,u8 Column,u32 Number,u8 Length)
         显示一个无符号数字
         返回值：无
 
-    void OLED_ShowSigned(u8 Line,u8 Column,int32 Number,u8 Length)
+    void oled_show_signednum(u8 Line,u8 Column,int32 Number,u8 Length)
         显示一个有符号数字
         返回值：无
 
-    void OLED_ShowHexNum(u8 Line,u8 Column,u32 Number,u8 Length)
+    void oled_show_hexnum(u8 Line,u8 Column,u32 Number,u8 Length)
         显示一个十六进制数字
         返回值：无
 
-    void OLED_ShowBinNum(u8 Line,u8 Column,u32 Number,u8 Length)
+    void oled_show_binnum(u8 Line,u8 Column,u32 Number,u8 Length)
         显示一个二进制数字
         返回值：无
 
@@ -118,13 +118,13 @@
     extern u8 rxBuffer[BUFSIZE] 存放接收数据的缓冲区，需在用户代码中手动清空(rxBuffer='\0';)
     extern u8 cmdReady  接收数据完成标志，接收完成自动变为1，在用户代码中需手动置0
 #### 函数：
-    void UART_Init()
+    void uart_init()
         初始化
 
-    void UART_SendByte(u8 dat)
+    void uart_sendbyte(u8 dat)
         发送一个字符
 
-    void UART_SendString(char *string);
+    void uart_sendstring(char *string);
         发送一个字符串
 #### 中断使用说明：
     当字符串末尾为\r或者\n时触发中断，cmdReady置1，停止接收数据，

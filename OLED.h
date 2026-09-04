@@ -2,13 +2,13 @@
 #define __OLED_H
 
 #include "typedef.h"
-void OLED_Init(void);
-void OLED_Clear(void);
-void OLED_ShowChar(u8 Line, u8 Column, char Char);
-void OLED_ShowString(u8 Line, u8 Column, char *String);
-void OLED_ShowNum(u8 Line, u8 Column, u32 Number, u8 Length);
-void OLED_ShowSignedNum(u8 Line, u8 Column, int32 Number, u8 Length);
-void OLED_ShowHexNum(u8 Line, u8 Column, u32 Number, u8 Length);
-void OLED_ShowBinNum(u8 Line, u8 Column, u32 Number, u8 Length);
+void oled_init(void);
+void oled_clear(void);
+void oled_showchar(u8 Line, u8 Column, char Char);
+void oled_showstring(u8 Line, u8 Column, char *String);
+void oled_show_num(u8 Line, u8 Column, u32 Number, u8 Length);
+void oled_show_signednum(u8 Line, u8 Column, int32 Number, u8 Length);
+void oled_show_hexnum(u8 Line, u8 Column, u32 Number, u8 Length);
+void oled_show_binnum(u8 Line, u8 Column, u32 Number, u8 Length);
 
 #endif

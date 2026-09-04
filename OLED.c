@@ -87,7 +87,7 @@ void OLED_SetCursor(u8 Y, u8 X)
  * @param  无
  * @retval 无
  */
-void OLED_Clear(void)
+void oled_clear(void)
 {
     u8 i, j;
     for (j = 0; j < 8; j++)
@@ -107,7 +107,7 @@ void OLED_Clear(void)
  * @param  Char 要显示的一个字符，范围：ASCII可见字符
  * @retval 无
  */
-void OLED_ShowChar(u8 Line, u8 Column, char Char)
+void oled_showchar(u8 Line, u8 Column, char Char)
 {
     u8 i;
     OLED_SetCursor((Line - 1) * 2, (Column - 1) * 8); // 设置光标位置在上半部分
@@ -129,12 +129,12 @@ void OLED_ShowChar(u8 Line, u8 Column, char Char)
  * @param  String 要显示的字符串，范围：ASCII可见字符
  * @retval 无
  */
-void OLED_ShowString(u8 Line, u8 Column, char *String)
+void oled_showstring(u8 Line, u8 Column, char *String)
 {
     u8 i;
     for (i = 0; String[i] != '\0'; i++)
     {
-        OLED_ShowChar(Line, Column + i, String[i]);
+        oled_showchar(Line, Column + i, String[i]);
     }
 }
 
@@ -160,12 +160,12 @@ u32 OLED_Pow(u32 X, u32 Y)
  * @param  Length 要显示数字的长度，范围：1~10
  * @retval 无
  */
-void OLED_ShowNum(u8 Line, u8 Column, u32 Number, u8 Length)
+void oled_show_num(u8 Line, u8 Column, u32 Number, u8 Length)
 {
     u8 i;
     for (i = 0; i < Length; i++)
     {
-        OLED_ShowChar(Line, Column + i, Number / OLED_Pow(10, Length - i - 1) % 10 + '0');
+        oled_showchar(Line, Column + i, Number / OLED_Pow(10, Length - i - 1) % 10 + '0');
     }
 }
 
@@ -177,23 +177,23 @@ void OLED_ShowNum(u8 Line, u8 Column, u32 Number, u8 Length)
  * @param  Length 要显示数字的长度，范围：1~10
  * @retval 无
  */
-void OLED_ShowSignedNum(u8 Line, u8 Column, int32 Number, u8 Length)
+void oled_show_signednum(u8 Line, u8 Column, int32 Number, u8 Length)
 {
     u8 i;
     u32 Number1;
     if (Number >= 0)
     {
-        OLED_ShowChar(Line, Column, '+');
+        oled_showchar(Line, Column, '+');
         Number1 = Number;
     }
     else
     {
-        OLED_ShowChar(Line, Column, '-');
+        oled_showchar(Line, Column, '-');
         Number1 = -Number;
     }
     for (i = 0; i < Length; i++)
     {
-        OLED_ShowChar(Line, Column + i + 1, Number1 / OLED_Pow(10, Length - i - 1) % 10 + '0');
+        oled_showchar(Line, Column + i + 1, Number1 / OLED_Pow(10, Length - i - 1) % 10 + '0');
     }
 }
 
@@ -205,7 +205,7 @@ void OLED_ShowSignedNum(u8 Line, u8 Column, int32 Number, u8 Length)
  * @param  Length 要显示数字的长度，范围：1~8
  * @retval 无
  */
-void OLED_ShowHexNum(u8 Line, u8 Column, u32 Number, u8 Length)
+void oled_show_hexnum(u8 Line, u8 Column, u32 Number, u8 Length)
 {
     u8 i, SingleNumber;
     for (i = 0; i < Length; i++)
@@ -213,11 +213,11 @@ void OLED_ShowHexNum(u8 Line, u8 Column, u32 Number, u8 Length)
         SingleNumber = Number / OLED_Pow(16, Length - i - 1) % 16;
         if (SingleNumber < 10)
         {
-            OLED_ShowChar(Line, Column + i, SingleNumber + '0');
+            oled_showchar(Line, Column + i, SingleNumber + '0');
         }
         else
         {
-            OLED_ShowChar(Line, Column + i, SingleNumber - 10 + 'A');
+            oled_showchar(Line, Column + i, SingleNumber - 10 + 'A');
         }
     }
 }
@@ -230,12 +230,12 @@ void OLED_ShowHexNum(u8 Line, u8 Column, u32 Number, u8 Length)
  * @param  Length 要显示数字的长度，范围：1~16
  * @retval 无
  */
-void OLED_ShowBinNum(u8 Line, u8 Column, u32 Number, u8 Length)
+void oled_show_binnum(u8 Line, u8 Column, u32 Number, u8 Length)
 {
     u8 i;
     for (i = 0; i < Length; i++)
     {
-        OLED_ShowChar(Line, Column + i, Number / OLED_Pow(2, Length - i - 1) % 2 + '0');
+        oled_showchar(Line, Column + i, Number / OLED_Pow(2, Length - i - 1) % 2 + '0');
     }
 }
 
@@ -244,9 +244,9 @@ void OLED_ShowBinNum(u8 Line, u8 Column, u32 Number, u8 Length)
  * @param  无
  * @retval 无
  */
-void OLED_Init(void)
+void oled_init(void)
 {
-    OLED_Clear();    // OLED清屏
+    oled_clear();    // OLED清屏
     OLED_SPI_Init(); // 端口初始化
 
     OLED_WriteCommand(0xAE); // 关闭显示
@@ -287,5 +287,5 @@ void OLED_Init(void)
     OLED_WriteCommand(0x8D); // 设置充电泵
     OLED_WriteCommand(0x14);
 
-    OLED_Clear(); // OLED清屏
+    oled_clear(); // OLED清屏
 }

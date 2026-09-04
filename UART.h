@@ -9,9 +9,9 @@
 extern u8 rxBuffer[BUFSIZE];
 extern u8 rxIndex;
 extern u8 cmdReady;
-void UART_Init();
-void UART_SendByte(u8 dat);
-void UART_SendString(char *string);
+void uart_init();
+void uart_sendbyte(u8 dat);
+void uart_sendstring(char *string);
 char putchar(char c);
 
 #endif
