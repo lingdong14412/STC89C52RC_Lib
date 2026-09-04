@@ -355,12 +355,12 @@ typedef struct
 {
     u8 Mode; // IO模式,  		GPIO_PullUp,GPIO_HighZ,GPIO_OUT_OD,GPIO_OUT_PP
     u8 Pin;  // 要设置的端口
-} GPIO_t;
+} gpio_t;
 
-u8 GPIO_Init(u8 GPIO, GPIO_t *GPIOx);
-u8 GPIO_Pin_Set(u8 Port, u8 Pin);
-u8 GPIO_Pin_Reset(u8 Port, u8 Pin);
-u8 GPIO_Write(u8 Port, u8 Pin, u8 Level);
-u8 GPIO_Read(u8 Port, u8 Pin);
+u8 gpio_init(u8 GPIO, gpio_t *GPIOx);
+u8 gpio_set(u8 Port, u8 Pin);
+u8 gpio_reset(u8 Port, u8 Pin);
+u8 gpio_write(u8 Port, u8 Pin, u8 Level);
+u8 gpio_read(u8 Port, u8 Pin);
 
 #endif

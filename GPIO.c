@@ -1,15 +1,15 @@
 #include "GPIO.h"
 
 
-u8 GPIO_Init(u8 GPIO, GPIO_t *GPIOx)
+u8 gpio_init(u8 GPIO_Px, gpio_t *GPIOx)
 {
-    if (GPIO > GPIO_P4)
+    if (GPIO_Px > GPIO_P4)
         return FAIL;
     if (GPIOx->Mode > GPIO_OUT_PP)
         return FAIL;
 
     // 配置端口模式
-    switch (GPIO)
+    switch (GPIO_Px)
     {
     case GPIO_P0:
         if (GPIOx->Mode == GPIO_PullUp)
@@ -96,7 +96,7 @@ u8 GPIO_Init(u8 GPIO, GPIO_t *GPIOx)
  * @param  Pin: 位掩码 (0x01~0xFF)，可组合多个引脚
  * @retval SUCCESS/FAIL
  */
-u8 GPIO_Pin_Set(u8 Port, u8 Pin)
+u8 gpio_set(u8 Port, u8 Pin)
 {
     if (Port > 4)
         return FAIL;
@@ -132,7 +132,7 @@ u8 GPIO_Pin_Set(u8 Port, u8 Pin)
  * @param  Pin: 位掩码 (0x01~0xFF)，可组合多个引脚
  * @retval SUCCESS/FAIL
  */
-u8 GPIO_Pin_Reset(u8 Port, u8 Pin)
+u8 gpio_reset(u8 Port, u8 Pin)
 {
     if (Port > 4)
         return FAIL;
@@ -162,22 +162,22 @@ u8 GPIO_Pin_Reset(u8 Port, u8 Pin)
     return SUCCESS;
 }
 
-u8 GPIO_Write(u8 Port, u8 Pin, u8 Level)
+u8 gpio_write(u8 Port, u8 Pin, u8 Level)
 {
     if (Port > 4)
         return FAIL;
     if (Level == HIGH)
     {
-        GPIO_Pin_Set(Port, Pin);
+        gpio_set(Port, Pin);
     }
     else if (Level == LOW)
     {
-        GPIO_Pin_Reset(Port, Pin);
+        gpio_reset(Port, Pin);
     }
     return FAIL;
 }
 
-u8 GPIO_Read(u8 Port, u8 Pin)
+u8 gpio_read(u8 Port, u8 Pin)
 {
     u8 gpio_level;
     switch (Port)

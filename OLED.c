@@ -6,19 +6,19 @@
 #include "typedef.h"
 #include "OLED.h"
 
-#define OLED_SCL(x) GPIO_Write(GPIO_P1, GPIO_Pin_0, x)
-#define OLED_SDA(x) GPIO_Write(GPIO_P1, GPIO_Pin_1, x)
-#define OLED_RES(x) GPIO_Write(GPIO_P1, GPIO_Pin_2, x)
-#define OLED_DC(x) GPIO_Write(GPIO_P1, GPIO_Pin_3, x)
-#define OLED_CS(x) GPIO_Write(GPIO_P1, GPIO_Pin_4, x)
-GPIO_t oled;
+#define OLED_SCL(x) gpio_write(GPIO_P1, GPIO_Pin_0, x)
+#define OLED_SDA(x) gpio_write(GPIO_P1, GPIO_Pin_1, x)
+#define OLED_RES(x) gpio_write(GPIO_P1, GPIO_Pin_2, x)
+#define OLED_DC(x) gpio_write(GPIO_P1, GPIO_Pin_3, x)
+#define OLED_CS(x) gpio_write(GPIO_P1, GPIO_Pin_4, x)
+gpio_t oled;
 /*引脚初始化*/
 void OLED_SPI_Init(void)
 {
     oled.Mode = GPIO_OUT_PP;
     oled.Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_4;
 
-    GPIO_Init(GPIO_P1, &oled);
+    gpio_init(GPIO_P1, &oled);
 
     OLED_SCL(0);
     OLED_SDA(1);

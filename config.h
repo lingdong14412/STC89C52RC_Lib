@@ -8,8 +8,8 @@
 
 
 // 选择当前使用的晶振（取消注释其中一个）
-#define FOSC  FOSC_12M       // 使用12MHz晶振
-//  #define FOSC  FOSC_11_0592M
+//#define FOSC  FOSC_12M       // 使用12MHz晶振
+  #define FOSC  FOSC_11_0592M
 
 
 
