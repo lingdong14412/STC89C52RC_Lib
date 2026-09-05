@@ -2,7 +2,7 @@
 #define		__TYPE_DEF_H
 
 //========================================================================
-//                               ÀàÐÍ¶¨Òå
+//                               ï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½
 //========================================================================
 
 typedef unsigned char   u8;     //  8 bits 
@@ -21,4 +21,7 @@ typedef unsigned long   uint32; // 32 bits
 
 #define	TRUE	1
 #define	FALSE	0
+
+#define SUCCESS 0
+#define FAIL    -1
 #endif

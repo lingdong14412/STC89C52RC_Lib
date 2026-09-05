@@ -1,8 +1,7 @@
 #ifndef __GPIO_H_
 #define __GPIO_H_
 
-#define SUCCESS 0
-#define FAIL    -1
+
 #include "register.h"
 #include "typedef.h"
 
@@ -202,20 +201,20 @@
 
 
 /***************
- ****ÍÆÍìÊä³ö****
+ ****ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½****
  ***************/
-// ÉèÖÃP0xÎªÍÆÍìÊä³ö£¨x: 0-7£©
+// ï¿½ï¿½ï¿½ï¿½P0xÎªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½x: 0-7ï¿½ï¿½
 #define P0_MODE_OUT_PP(Pin) P0M0 |= (Pin), P0M1 &= ~(Pin)
-// ÉèÖÃP1xÎªÍÆÍìÊä³ö
+// ï¿½ï¿½ï¿½ï¿½P1xÎªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 #define P1_MODE_OUT_PP(Pin) P1M0 |= (Pin), P1M1 &= ~(Pin)
-// ÉèÖÃP2xÎªÍÆÍìÊä³ö
+// ï¿½ï¿½ï¿½ï¿½P2xÎªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 #define P2_MODE_OUT_PP(Pin) P2M0 |= (Pin), P2M1 &= ~(Pin)
-// ÉèÖÃP3xÎªÍÆÍìÊä³ö
+// ï¿½ï¿½ï¿½ï¿½P3xÎªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 #define P3_MODE_OUT_PP(Pin) P3M0 |= (Pin), P3M1 &= ~(Pin)
-// ÉèÖÃP4xÎªÍÆÍìÊä³ö
+// ï¿½ï¿½ï¿½ï¿½P4xÎªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 #define P4_MODE_OUT_PP(Pin) P4M0 |= (Pin), P4M1 &= ~(Pin)
 
-// ÅúÁ¿ÉèÖÃ¶à¸öÒý½ÅÎªÍÆÍìÊä³ö£¨Port: 0-4, Pin: Î»ÑÚÂë£©
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Port: 0-4, Pin: Î»ï¿½ï¿½ï¿½ë£©
 #define GPIO_MODE_OUT_PP(Port, Pin) \
     do {                                \
         if ((Port) == 0) {              \
@@ -237,7 +236,7 @@
     } while (0)
 
 /***************
- ****×¼Ë«Ïò¿Ú****
+ ****×¼Ë«ï¿½ï¿½ï¿½****
  ***************/
 #define P0_MODE_IO_PU(Pin) P0M0 &= ~(Pin), P0M1 &= ~(Pin)
 #define P1_MODE_IO_PU(Pin) P1M0 &= ~(Pin), P1M1 &= ~(Pin)
@@ -245,7 +244,7 @@
 #define P3_MODE_IO_PU(Pin) P3M0 &= ~(Pin), P3M1 &= ~(Pin)
 #define P4_MODE_IO_PU(Pin) P4M0 &= ~(Pin), P4M1 &= ~(Pin)
 
-// ÅúÁ¿ÉèÖÃ¶à¸öÒý½ÅÎª×¼Ë«Ïò¿Ú
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª×¼Ë«ï¿½ï¿½ï¿½
 #define GPIO_MODE_IO_PU(Port, Pin) \
     do {                               \
         if ((Port) == 0) {             \
@@ -267,7 +266,7 @@
     } while (0)
 
 /***************
- ****¿ªÂ©Ä£Ê½****
+ ****ï¿½ï¿½Â©Ä£Ê½****
  ***************/
 #define P0_MODE_OUT_OD(Pin) P0M0 |= (Pin), P0M1 |= (Pin)
 #define P1_MODE_OUT_OD(Pin) P1M0 |= (Pin), P1M1 |= (Pin)
@@ -275,7 +274,7 @@
 #define P3_MODE_OUT_OD(Pin) P3M0 |= (Pin), P3M1 |= (Pin)
 #define P4_MODE_OUT_OD(Pin) P4M0 |= (Pin), P4M1 |= (Pin)
 
-// ÅúÁ¿ÉèÖÃ¶à¸öÒý½ÅÎª¿ªÂ©Ä£Ê½
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Â©Ä£Ê½
 #define GPIO_MODE_OUT_OD(Port, Pin) \
     do {                                \
         if ((Port) == 0) {              \
@@ -297,7 +296,7 @@
     } while (0)
 
 /***************
- ****¸ß×èÊäÈë****
+ ****ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½****
  ***************/
 #define P0_MODE_IN_HIZ(Pin) P0M0 &= ~(Pin), P0M1 |= (Pin)
 #define P1_MODE_IN_HIZ(Pin) P1M0 &= ~(Pin), P1M1 |= (Pin)
@@ -305,7 +304,7 @@
 #define P3_MODE_IN_HIZ(Pin) P3M0 &= ~(Pin), P3M1 |= (Pin)
 #define P4_MODE_IN_HIZ(Pin) P4M0 &= ~(Pin), P4M1 |= (Pin)
 
-// ÅúÁ¿ÉèÖÃ¶à¸öÒý½ÅÎª¸ß×èÊäÈë
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 #define GPIO_MODE_IN_HIZ(Port, Pin) \
     do {                                \
         if ((Port) == 0) {              \
@@ -327,9 +326,9 @@
     } while (0)
 
 /***************
- ****Í¨ÓÃÄ£Ê½ÉèÖÃºê****
+ ****Í¨ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½Ãºï¿½****
  ***************/
-// ¸ù¾ÝÄ£Ê½ÉèÖÃÒý½Å£¨Port: 0-4, Pin: Î»ÑÚÂë, Mode: GPIO_PullUp/GPIO_HighZ/GPIO_OUT_OD/GPIO_OUT_PP£©
+// ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å£ï¿½Port: 0-4, Pin: Î»ï¿½ï¿½ï¿½ï¿½, Mode: GPIO_PullUp/GPIO_HighZ/GPIO_OUT_OD/GPIO_OUT_PPï¿½ï¿½
 #define GPIO_SET_MODE(Port, Pin, Mode)   \
     do {                                     \
         if ((Mode) == GPIO_PullUp) {         \
@@ -343,10 +342,10 @@
         }                                    \
     } while (0)
 
-#define GPIO_PullUp 0 // ÉÏÀ­×¼Ë«Ïò¿Ú
-#define GPIO_HighZ  1 // ¸¡¿ÕÊäÈë
-#define GPIO_OUT_OD 2 // ¿ªÂ©Êä³ö
-#define GPIO_OUT_PP 3 // ÍÆÍìÊä³ö
+#define GPIO_PullUp 0 // ï¿½ï¿½ï¿½ï¿½×¼Ë«ï¿½ï¿½ï¿½
+#define GPIO_HighZ  1 // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+#define GPIO_OUT_OD 2 // ï¿½ï¿½Â©ï¿½ï¿½ï¿½
+#define GPIO_OUT_PP 3 // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 #define HIGH        1
 #define LOW         0
@@ -354,7 +353,7 @@
 typedef struct
 {
     u8 Mode; // IOÄ£Ê½,  		GPIO_PullUp,GPIO_HighZ,GPIO_OUT_OD,GPIO_OUT_PP
-    u8 Pin;  // ÒªÉèÖÃµÄ¶Ë¿Ú
+    u8 Pin;  // Òªï¿½ï¿½ï¿½ÃµÄ¶Ë¿ï¿½
 } gpio_t;
 
 u8 gpio_init(u8 GPIO, gpio_t *GPIOx);

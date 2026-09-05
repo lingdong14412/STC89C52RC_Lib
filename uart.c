@@ -3,12 +3,22 @@
 #include "typedef.h"
 #include "register.h"
 #include <stdio.h>
+#include <stddef.h>
 
 u8 BaudRate = 9600;
 
 u8 rxBuffer[20];
 u8 rxIndex = 0;
 u8 cmdReady = 0;
+
+static uart_callback_t uart_callback=NULL;
+
+void uart_set_callback(uart_callback_t callback)
+{
+    uart_callback=callback;
+}
+
+
 void uart_isr(void) interrupt 4
 {
     u8 ch;
@@ -23,6 +33,11 @@ void uart_isr(void) interrupt 4
                 rxBuffer[rxIndex] = '\0';
                 cmdReady = 1;
                 rxIndex = 0;
+                if(uart_callback!=NULL)
+                {
+                    uart_callback();
+                }
+                rxBuffer[0]='\0';
             }
             return;
         }
@@ -35,9 +50,9 @@ void uart_isr(void) interrupt 4
 
 void uart_init()
 {
-    SCON = 0x50;  // 8λ����,�ɱ䲨����
-    TMOD &= 0x0F; // ���㶨ʱ��1ģʽλ
-    TMOD |= 0x20; // ��ʱ��1ģʽ2��8λ�Զ���װ��
+    SCON = 0x50;  
+    TMOD &= 0x0F; 
+    TMOD |= 0x20; 
 
 #if FOSC == 11059200L
     switch (BaudRate)
@@ -78,10 +93,10 @@ void uart_init()
     }
 #endif
 
-    ET1 = 0; // ��ֹ��ʱ���ж�
-    TR1 = 1; // ������ʱ��1
-    ES = 1;  // ʹ�ܴ����ж�
-    EA = 1;  // �������ж�
+    ET1 = 0; 
+    TR1 = 1; 
+    ES = 1;  
+    EA = 1; 
 }
 void uart_sendbyte(u8 dat)
 {

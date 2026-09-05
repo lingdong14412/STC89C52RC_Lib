@@ -5,6 +5,8 @@
 ### typedef.h   类型声明
 ### config.h    用于选择晶振频率，以便匹配不同的外设函数
 ## 外设文件：
+
+# GPIO
 ### gpio.h  (借鉴STC8G_H系列库函数及Arduino框架函数风格)
 #### 端口宏：GPIP_P0 ~ GPIO_P4
 #### 引脚宏：GPIO_Pin_0 ~ GPIO_Pin_7
@@ -42,7 +44,7 @@
 #### 结构体：struct gpio_t
 #### 成员：
         Mode  设置端口模式
-        Pin   设置引脚
+        Pin   设置引脚(可用或运算设置多个引脚)
 #### 函数：
         u8 gpio_init(u8 GPIO_Px,gpio_t *GPIO_Structure)
             返回值：成功SUCCESS
@@ -68,7 +70,7 @@
             返回值：HIGH高电平
                     LOW低电平
 
-
+# OLED屏幕
 ### oled.h  (SPI协议七针屏幕)(此为移植江科大STM32的OLED函数)
 #### 管脚：
     时钟P10
@@ -109,7 +111,7 @@
         显示一个二进制数字
         返回值：无
 
-
+# 串口
 ### uart.h
 #### 宏：
     BUFSIZE  设置接收数据缓冲区大小
@@ -126,18 +128,35 @@
 
     void uart_sendstring(char *string);
         发送一个字符串
-#### 中断使用说明：
-    当字符串末尾为\r或者\n时触发中断，cmdReady置1，停止接收数据，
-    不需要改UART.c里面的中断服务函数，可直接在main.c使用cmdReady和rxBuffer，记得手动cmdReady=0和rxBuffer='\0'即可
-    (接收到的数据末尾是没有\r\n的，要手动加上)
+
+    void uart_set_callback(void(*fn)(void))
+        设置串口接收中断回调函数
+        接受一个返回值为void，无参数的函数作为参数
+        
+
 ##### 另：已重定向printf()，可直接用printf发送字符串数据
 
+# 延时
 ### delay.h
 #### 函数:
     void delay(u16 ms)
         延时指定毫秒数
 
-
+# 定时器(使用定时器0，16位模式)
+### timer.h
+#### 函数：
+    u8 tim_set_arv(u16 x)
+        设置定时器定时长度(x为微秒数)
+        要求x>100且x<10000
+        返回值：SUCCESS成功
+                FAIL失败
+#### 使用定时器必须使用此函数设置定时长度
+    void timer_init()
+        初始化定时器
+        返回值：无
+    void timer_set_callback(void(*fn)(void))
+        设置定时器回调函数
+        接受一个返回值为void，参数为空的函数作为参数
 
 
 
