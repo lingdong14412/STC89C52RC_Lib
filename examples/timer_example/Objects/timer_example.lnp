@@ -1,0 +1,6 @@
+".\Objects\gpio.obj",
+".\Objects\timer.obj",
+".\Objects\main.obj" 
+TO ".\Objects\timer_example" 
+PRINT(".\Listings\timer_example.m51") RAMSIZE(256) 
+DISABLEWARNING (16,1,2) 

@@ -1,0 +1,44 @@
+C51 COMPILER V9.60.7.0   MAIN                                                              09/06/2026 12:25:15 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\keil5\C51\BIN\C51.EXE main.c LARGE OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\
+                    -main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "gpio.h"
+   2          #include "delay.h"
+   3          
+   4          gpio_t GPIO_Struct;
+   5          
+   6          void main()
+   7          {
+   8   1        GPIO_Struct.Mode=GPIO_OUT_PP;
+   9   1        GPIO_Struct.Pin=GPIO_Pin_0|GPIO_Pin_1;  
+  10   1        gpio_init(GPIO_P2,&GPIO_Struct);    //初始化
+  11   1        gpio_write(GPIO_P2,GPIO_Pin_0|GPIO_Pin_1,LOW);  //GPIO_Pin_0和GPIO_Pin_1写入低电平
+  12   1        
+  13   1        GPIO_MODE_OUT_PP(GPIO_P2,GPIO_Pin_2);
+  14   1        gpio_set(GPIO_P2,GPIO_Pin_2);
+  15   1        while(1){
+  16   2            gpio_write(GPIO_P2,GPIO_Pin_2,!gpio_read(GPIO_P2,GPIO_Pin_2));  
+  17   2          delay(1000);    //每1秒改变一次电平
+  18   2        }
+  19   1      
+  20   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     73    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      2    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

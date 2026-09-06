@@ -1,0 +1,50 @@
+C51 COMPILER V9.60.7.0   MAIN                                                              09/06/2026 12:23:26 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\keil5\C51\BIN\C51.EXE main.c LARGE OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\
+                    -main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "timer.h"
+   2          #include "gpio.h"
+   3          #include "typedef.h"
+   4          static u8 cnt=0;
+   5          void isr()
+   6          {
+   7   1          cnt++;
+   8   1        if(cnt>=1000)
+   9   1        {
+  10   2          gpio_write(GPIO_P2,GPIO_Pin_4,!gpio_read(GPIO_P2,GPIO_Pin_4));    //LED每一秒钟改变一次亮灭
+  11   2          cnt=0;
+  12   2        }
+  13   1        
+  14   1      }
+  15          
+  16          void main()
+  17          {
+  18   1        GPIO_MODE_OUT_PP(GPIO_P2,GPIO_Pin_4);   //设置LED使用的引脚为推挽输出
+  19   1        gpio_write(GPIO_P2,GPIO_Pin_4,HIGH);
+  20   1        timer_init();
+  21   1        tim_set_arv(1000);    //设置定时长度为1ms（1000us）
+  22   1        
+  23   1        
+  24   1        
+  25   1        
+  26   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     70    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      1    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

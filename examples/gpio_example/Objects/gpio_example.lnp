@@ -1,0 +1,6 @@
+".\Objects\main.obj",
+".\Objects\delay.obj",
+".\Objects\gpio.obj" 
+TO ".\Objects\gpio_example" 
+PRINT(".\Listings\gpio_example.m51") RAMSIZE(256) 
+DISABLEWARNING (16) 
