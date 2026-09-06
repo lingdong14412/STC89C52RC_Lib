@@ -117,6 +117,7 @@
     BUFSIZE  设置接收数据缓冲区大小
 #### 变量：
     u8 BaudRate (在UART.c里)设置波特率(仅支持2400，4800，9600)，默认9600
+    u8 rxBuffer[BUFSIZE] 接收数据的缓冲区，可在自己的代码里直接使用
 
 #### 函数：
     void uart_init()
